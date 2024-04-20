@@ -21,7 +21,12 @@ void printNavbar(string bars[], int size) {
 
   for (i = 0; i < size; ++i) {
     element = bars[i];
-    cout << element;
+    if (element == "add" || element == "edit") {
+      cout << "[" << element << "]";
+    } else {
+      cout << element;
+    }
+
     if (i == size - 1) {
       cout << '\n';
     } else {
