@@ -21,16 +21,25 @@ void printNavbar(string bars[], int size) {
 
   for (i = 0; i < size; ++i) {
     element = bars[i];
-    if (element == "add" || element == "edit") {
-      cout << "[" << element << "]";
-    } else {
-      cout << element;
-    }
+    cout << element;
 
     if (i == size - 1) {
       cout << '\n';
     } else {
       cout << " > ";
+    }
+  }
+}
+
+void printMenu(string options[], int size) {
+  string element;
+  int i;
+
+  for (i = 0; i < size; ++i) {
+    element = options[i];
+    cout << element << "\n";
+    if (options[i + 1] == "m. main menu" || options[i + 1] == "0. exit") {
+      cout << "\n";
     }
   }
 }

@@ -38,7 +38,7 @@ Business:                                    IT:
  *
  * */
 
-void printMenu(string options[]); // Bobur
+void printMenu(string options[], int size); // Bobur
 /*
  * this function takes an array of strings.
  * it should print them in the following order:
