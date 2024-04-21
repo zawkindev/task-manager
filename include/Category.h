@@ -10,8 +10,13 @@ private:
   Task tasks[LIMIT];
 
 public:
+  // getters
   string getName();
-  Task* getTasks();
+  Task *getTasks();
+
+  // setters
+  void setName(string name);
+  void setTasks(Task tasks[]);
 };
 
 #endif
