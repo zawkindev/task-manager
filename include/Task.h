@@ -7,16 +7,14 @@ using namespace std;
 class Task {
 private:
   bool edited;
-  string category;
   string name;
 
 public:
+  Task();
   string getName();
-  string getCategory();
   bool getState();
 
   void setName(string name);
-  void setCategory(string category);
   void toggleState();
 };
 
