@@ -1,7 +1,6 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include "Task.h"
 #include "globals.h"
 
 template <class T> class Stack {
