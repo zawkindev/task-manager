@@ -1,4 +1,5 @@
 #include "../include/Stack.h"
+#include "../include/Task.h"
 
 template <class T> Stack<T>::Stack() {
   T emptyItem;
