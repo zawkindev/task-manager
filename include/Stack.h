@@ -12,7 +12,7 @@ public:
 
   Stack();
 
-  T *getData();
+  T *getData() ;
   void add(T item);
   void pop();
 };

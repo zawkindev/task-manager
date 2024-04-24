@@ -19,7 +19,8 @@ template <class T> void Stack<T>::add(T item) {
 }
 
 template <class T> void Stack<T>::pop() {
-  Task emptyTask;
-  this->data[size] = emptyTask;
+  this->data[size] = T();
   --size;
 }
+
+template class Stack<Task>;
