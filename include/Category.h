@@ -1,19 +1,18 @@
 #ifndef CATEGORY_H
 #define CATEGORY_H
 
-#include "Stack.h"
 #include "Task.h"
 #include "globals.h"
 
 class Category {
 private:
   string name;
-  Stack<Task> stack;
+  Task tasks[LIMIT];
 
 public:
   // getters
   string getName();
-  Task *getTasks();
+  Task* getTasks();
 
   // setters
   void setName(string name);
