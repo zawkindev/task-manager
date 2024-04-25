@@ -11,7 +11,7 @@ template <class T> Stack<T>::Stack() {
 
 template <class T> T *Stack<T>::getData() { return data; }
 
-template <class T> void Stack<T>::add(T item) {
+template <class T> void Stack<T>::add(const T item) {
   if (size < LIMIT) {
     this->data[size] = item;
   }

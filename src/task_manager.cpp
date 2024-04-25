@@ -1,5 +1,5 @@
-#include "../include/task_manager.h"
 #include "../include/globals.h"
+#include "../include/task_manager.h"
 #include <iostream>
 #include <string>
 
@@ -15,7 +15,7 @@ int arraySize(string array[]) {
   return i;
 };
 
-void printNavbar(string bars[], int size) {
+void printNavbar(const string bars[], int size) {
   string element;
   int i;
 
@@ -31,7 +31,7 @@ void printNavbar(string bars[], int size) {
   }
 }
 
-void printMenu(string options[], int size) {
+void printMenu(const string options[], int size) {
   string element;
   int i;
 
