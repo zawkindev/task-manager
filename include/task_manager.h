@@ -7,6 +7,8 @@ using namespace std;
 
 int arraySize(string array[]);
 
+void enlargeTextWithSpaces(string text, int size);
+
 void printNavbar(string bars[], int size); // Ollobergan
 /*
  * this function takes an array of strings.

@@ -1,5 +1,5 @@
-#include "../include/globals.h"
 #include "../include/task_manager.h"
+#include "../include/globals.h"
 #include <iostream>
 #include <string>
 
@@ -13,6 +13,23 @@ int arraySize(string array[]) {
     ;
 
   return i;
+};
+
+void enlargeTextWithSpaces(string *text, int size) {
+  string ch;
+  bool reached_end = false;
+
+  for (int i = 0; i < size; i++) {
+    ch = *(text + i);
+
+    if (ch == "__EOA__") {
+      reached_end = false;
+      continue;
+    }
+
+    if (reached_end)
+      *text += " ";
+  }
 };
 
 void printNavbar(const string bars[], int size) {
