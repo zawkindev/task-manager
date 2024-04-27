@@ -7,7 +7,7 @@ using namespace std;
 
 int arraySize(string array[]);
 
-void enlargeTextWithSpaces(string text, int size);
+void enlargeTextWithSpaces(string *text, int size);
 
 void printNavbar(string bars[], int size); // Ollobergan
 /*

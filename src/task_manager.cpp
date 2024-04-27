@@ -16,19 +16,16 @@ int arraySize(string array[]) {
 };
 
 void enlargeTextWithSpaces(string *text, int size) {
-  string ch;
   bool reached_end = false;
 
   for (int i = 0; i < size; i++) {
-    ch = *(text + i);
-
-    if (ch == "__EOA__") {
-      reached_end = false;
+    if (i == text->length()) {
+      reached_end = true;
       continue;
     }
 
     if (reached_end)
-      *text += " ";
+      *(text) += " ";
   }
 };
 
