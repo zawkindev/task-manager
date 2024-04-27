@@ -1,6 +1,7 @@
 #ifndef TASK_MANAGER_H
 #define TASK_MANAGER_H
 
+#include "Category.h"
 #include "Task.h"
 #include <string>
 using namespace std;
@@ -8,6 +9,8 @@ using namespace std;
 int arraySize(string array[]);
 
 void enlargeTextWithSpaces(string *text, int size);
+
+int findMax(Task *tasks);
 
 void printNavbar(string bars[], int size); // Ollobergan
 /*
@@ -21,6 +24,8 @@ void printNavbar(string bars[], int size); // Ollobergan
  * Main menu > manage tasks > [edit]
  *
  * */
+
+void formatTasks(Category category);
 
 void printTasks(Task todos[]); // Iftixorbek
 /*

@@ -29,6 +29,33 @@ void enlargeTextWithSpaces(string *text, int size) {
   }
 };
 
+void formatTasks(Category category) {
+  Task *tasks = category.getTasks();
+  Task max_task = tasks[findMax(tasks)];
+
+  for (int i = 0; i < category.size; i++) {
+    Task current_task = tasks[i];
+    string text = current_task.getName();
+
+    enlargeTextWithSpaces(&text, max_task.getName().length());
+
+    current_task.setName(text);
+  };
+}
+
+int findMax(Task *tasks[], int size) {
+  int max_index = 0;
+
+  for (int i = 0; i < size; i++) {
+    int len = tasks[i]->getName().length();
+
+    if (len > max_index)
+      max_index = len;
+  }
+
+  return max_index;
+}
+
 void printNavbar(const string bars[], int size) {
   string element;
   int i;

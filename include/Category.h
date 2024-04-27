@@ -8,9 +8,9 @@ class Category {
 private:
   string name;
   Task tasks[LIMIT];
-  int size;
 
 public:
+  int size;
 
   Category(); 
 

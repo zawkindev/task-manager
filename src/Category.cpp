@@ -1,5 +1,6 @@
 #include "../include/Category.h"
 #include "../include/Task.h"
+#include <iterator>
 
 Category::Category() {
   size = 0;
@@ -18,6 +19,8 @@ void Category::setTasks(Task tasks[], int size) {
   for (int i = 0; i < size; i++) {
     this->tasks[i] = tasks[i];
   }
+
+  this->size = size;
 }
 
 void Category::push(Task new_task) {
