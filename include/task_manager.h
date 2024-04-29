@@ -10,7 +10,7 @@ int arraySize(string array[]);
 
 void enlargeTextWithSpaces(string *text, int size);
 
-int findMax(Task *tasks);
+int findMax(Task *tasks, int supposed_size);
 
 void printNavbar(string bars[], int size); // Ollobergan
 /*

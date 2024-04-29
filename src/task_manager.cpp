@@ -31,7 +31,7 @@ void enlargeTextWithSpaces(string *text, int size) {
 
 void formatTasks(Category category) {
   Task *tasks = category.getTasks();
-  Task max_task = tasks[findMax(tasks)];
+  Task max_task = tasks[findMax(tasks, category.size)];
 
   for (int i = 0; i < category.size; i++) {
     Task current_task = tasks[i];
@@ -43,11 +43,11 @@ void formatTasks(Category category) {
   };
 }
 
-int findMax(Task *tasks[], int size) {
+int findMax(Task *tasks, int supposed_size) {
   int max_index = 0;
 
-  for (int i = 0; i < size; i++) {
-    int len = tasks[i]->getName().length();
+  for (int i = 0; i < supposed_size; i++) {
+    int len = tasks[i].getName().length();
 
     if (len > max_index)
       max_index = len;
