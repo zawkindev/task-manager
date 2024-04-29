@@ -15,18 +15,20 @@ int arraySize(string array[]) {
   return i;
 };
 
-void enlargeTextWithSpaces(string *text, int size) {
+string enlargeTextWithSpaces(string text, int size) {
   bool reached_end = false;
 
   for (int i = 0; i < size; i++) {
-    if (i == text->length()) {
+    if (i == text.length()) {
       reached_end = true;
       continue;
     }
 
     if (reached_end)
-      *(text) += " ";
+      text += ".";
   }
+
+  return text;
 };
 
 void formatTasks(Category category) {
@@ -34,23 +36,27 @@ void formatTasks(Category category) {
   Task max_task = tasks[findMax(tasks, category.size)];
 
   for (int i = 0; i < category.size; i++) {
-    Task current_task = tasks[i];
-    string text = current_task.getName();
+    Task *current_task = &tasks[i];
+    string en_text = enlargeTextWithSpaces(current_task->getName(),
+                                        max_task.getName().length());
+    std::cout << endl << en_text << endl;
+    std::cout << endl << "max task: " << max_task.getName() << endl;
 
-    enlargeTextWithSpaces(&text, max_task.getName().length());
-
-    current_task.setName(text);
+    current_task->setName(en_text);
   };
 }
 
 int findMax(Task *tasks, int supposed_size) {
   int max_index = 0;
+  int max_len = 0;
 
   for (int i = 0; i < supposed_size; i++) {
     int len = tasks[i].getName().length();
 
-    if (len > max_index)
-      max_index = len;
+    if (len > max_len) {
+      max_len = len;
+      max_index = i;
+    }
   }
 
   return max_index;

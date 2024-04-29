@@ -1,6 +1,6 @@
 #include "../include/Category.h"
 #include "../include/task_manager.h"
-// #include <iostream>
+#include <iostream>
 
 int main() {
   Category business;
@@ -14,6 +14,12 @@ int main() {
   business.setTasks(tasks, 2);
 
   formatTasks(business);
+
+  Task *sub_tasks = business.getTasks();
+
+  for (int i = 0; i < business.size; i++) {
+    std::cout << sub_tasks[i].getName();
+  }
 
   return 0;
 }
