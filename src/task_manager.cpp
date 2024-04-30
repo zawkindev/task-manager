@@ -1,5 +1,7 @@
 #include "../include/task_manager.h"
 #include "../include/globals.h"
+#include <fstream>
+#include <ios>
 #include <iostream>
 #include <string>
 
@@ -31,18 +33,6 @@ string enlargeTextWithSpaces(string text, int size) {
   return text;
 };
 
-void formatTasks(Category *category) {
-  Task *tasks = category->getTasks();
-  Task max_task = tasks[findMax(tasks, category->size)];
-
-  for (int i = 0; i < category->size; i++) {
-    Task *current_task = &tasks[i];
-    string en_text = enlargeTextWithSpaces(current_task->getName(),
-                                           max_task.getName().length());
-    current_task->setName(en_text);
-  };
-}
-
 int findMax(Task *tasks, int supposed_size) {
   int max_index = 0;
   int max_len = 0;
@@ -57,6 +47,41 @@ int findMax(Task *tasks, int supposed_size) {
   }
 
   return max_index;
+}
+
+void formatTasks(Category *category) {
+  Task *tasks = category->getTasks();
+  Task max_task = tasks[findMax(tasks, category->size)];
+
+  for (int i = 0; i < category->size; i++) {
+    Task *current_task = &tasks[i];
+    string en_text = enlargeTextWithSpaces(current_task->getName(),
+                                           max_task.getName().length());
+    current_task->setName(en_text);
+  };
+}
+
+void createFile(string filename) {
+  ofstream File(filename);
+  File.close();
+}
+
+void readFile(string *str, string filename) {
+  ifstream File(filename);
+  string temp;
+
+  if (File.is_open()) {
+    while (getline(File, temp))
+      *str += temp;
+  }
+}
+
+void writeFile(string str, string filename, std::ios::openmode mode) {
+  ofstream File(filename, mode);
+
+  if (File.is_open()) {
+    File << str;
+  }
 }
 
 void printNavbar(const string bars[], int size) {

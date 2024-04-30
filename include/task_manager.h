@@ -3,6 +3,7 @@
 
 #include "Category.h"
 #include "Task.h"
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -12,7 +13,15 @@ void enlargeTextWithSpaces(string *text, int size);
 
 int findMax(Task *tasks, int supposed_size);
 
-void printNavbar(string bars[], int size); // Ollobergan
+void formatTasks(Category *category);
+
+void createFile(string filename);
+
+void readFile(string *str, string filename);
+
+void writeFile(string str, string filename, std::ios::openmode mode);
+
+void printNavbar(string bars[], int size);
 /*
  * this function takes an array of strings.
  * it should print them in the following order:
@@ -25,9 +34,7 @@ void printNavbar(string bars[], int size); // Ollobergan
  *
  * */
 
-void formatTasks(Category *category);
-
-void printTasks(Task todos[]); // Iftixorbek
+void printTasks(Task todos[]);
 /*
  * this function takes an array of Tasks.
  * it should print them in the following order:
@@ -45,7 +52,7 @@ Business:                                    IT:
  *
  * */
 
-void printMenu(string options[], int size); // Bobur
+void printMenu(string options[], int size);
 /*
  * this function takes an array of strings.
  * it should print them in the following order:
