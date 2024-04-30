@@ -6,6 +6,8 @@ Task::Task() {
   edited = false;
 }
 
+Task::Task(string name) : name(name) {}
+
 string Task::getName() { return name; }
 bool Task::getState() { return edited; }
 

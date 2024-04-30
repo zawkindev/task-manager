@@ -11,6 +11,7 @@ private:
 
 public:
   Task();
+  Task(string name);
   string getName();
   bool getState();
 

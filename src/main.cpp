@@ -18,7 +18,7 @@ int main() {
   Task *sub_tasks = business.getTasks();
 
   for (int i = 0; i < business.size; i++) {
-    std::cout << sub_tasks[i].getName()<<endl;
+    std::cout << sub_tasks[i].getName() << endl;
   }
 
   return 0;
