@@ -18,30 +18,27 @@ int arraySize(string array[]) {
 string enlargeTextWithSpaces(string text, int size) {
   bool reached_end = false;
 
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i <= size; i++) {
     if (i == text.length()) {
       reached_end = true;
       continue;
     }
 
     if (reached_end)
-      text += ".";
+      text += " ";
   }
 
   return text;
 };
 
-void formatTasks(Category category) {
-  Task *tasks = category.getTasks();
-  Task max_task = tasks[findMax(tasks, category.size)];
+void formatTasks(Category *category) {
+  Task *tasks = category->getTasks();
+  Task max_task = tasks[findMax(tasks, category->size)];
 
-  for (int i = 0; i < category.size; i++) {
+  for (int i = 0; i < category->size; i++) {
     Task *current_task = &tasks[i];
     string en_text = enlargeTextWithSpaces(current_task->getName(),
-                                        max_task.getName().length());
-    std::cout << endl << en_text << endl;
-    std::cout << endl << "max task: " << max_task.getName() << endl;
-
+                                           max_task.getName().length());
     current_task->setName(en_text);
   };
 }

@@ -1,6 +1,5 @@
 #include "../include/Category.h"
 #include "../include/Task.h"
-#include <iterator>
 
 Category::Category() {
   size = 0;
