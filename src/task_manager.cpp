@@ -8,7 +8,7 @@
 using namespace std;
 
 template <class T> int arraySize(T arr[]) {
-  int s;
+  int s = 0;
   for (T i : arr)
     s++;
 
