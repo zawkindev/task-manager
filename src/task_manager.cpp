@@ -7,14 +7,12 @@
 
 using namespace std;
 
-int arraySize(string array[]) {
-  int i;
-  string element;
-  for (i = 0; (element = array[i]) != "__EOA__" && i < LIMIT;
-       ++i) // EOA means End of Array
-    ;
+template <class T> int arraySize(T arr[]) {
+  int s;
+  for (T i : arr)
+    s++;
 
-  return i;
+  return s;
 };
 
 string enlargeTextWithSpaces(string text, int size) {
@@ -99,6 +97,17 @@ void printNavbar(const string bars[], int size) {
     }
   }
 }
+
+// void printTasks(Category categories[]) {
+//   int c;
+//   int c_size = sizeof(categories) / sizeof(categories[0]);
+//
+//   for (int i = 0; i < LIMIT && (size = categories[i].size) > 0; i++) {
+//     for (int j = 0; j < business.size; j++) {
+//       std::cout << "  " << j + 1 << ". " << sub_tasks[j].getName() << '\n';
+//     }
+//   }
+// }
 
 void printMenu(const string options[], int size) {
   string element;

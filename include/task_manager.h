@@ -7,7 +7,8 @@
 #include <string>
 using namespace std;
 
-int arraySize(string array[]);
+template <class T>
+int arraySize(T arr[]);
 
 void enlargeTextWithSpaces(string *text, int size);
 
@@ -34,7 +35,7 @@ void printNavbar(string bars[], int size);
  *
  * */
 
-void printTasks(Task todos[]);
+void printTasks(Category categories[]);
 /*
  * this function takes an array of Tasks.
  * it should print them in the following order:

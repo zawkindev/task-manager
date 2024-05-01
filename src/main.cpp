@@ -4,22 +4,20 @@
 
 int main() {
   Category business;
+  Category IT;
 
-  Task t1, t2;
-  t1.setName("salomsdjfhalkjsdhflkajshdflkjah");
-  t2.setName("xayr");
+  Task t1, t2, t3, t4;
+  t1.setName("sell 13 bitcoins");
+  t2.setName("check newspaper everyday");
+  t3.setName("fix the bugs in production");
+  t4.setName("write a documentation");
 
-  Task tasks[] = {t1, t2};
+  Task tasks1[] = {t1, t2};
+  Task tasks2[] = {t3, t4};
 
-  business.setTasks(tasks, 2);
+  string arr[] = {"salom", "xayr"};
 
-  formatTasks(&business);
-
-  Task *sub_tasks = business.getTasks();
-
-  for (int j = 0; j < business.size; j++) {
-    std::cout << "  " << j + 1 << ". " << sub_tasks[j].getName() << '\n';
-  }
+  std::cout << arraySize(arr);
 
   return 0;
 }
