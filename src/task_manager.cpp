@@ -1,5 +1,4 @@
 #include "../include/task_manager.h"
-#include "../include/globals.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -114,4 +113,3 @@ void printMenu(const string options[], int size) {
     }
   }
 }
-
