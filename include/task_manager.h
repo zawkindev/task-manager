@@ -5,10 +5,10 @@
 #include "Task.h"
 #include <fstream>
 #include <string>
+
 using namespace std;
 
-template <class T>
-int arraySize(T arr[]);
+template <typename T, size_t N> size_t arraySize(T (&arr)[N]);
 
 void enlargeTextWithSpaces(string *text, int size);
 

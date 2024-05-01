@@ -1,19 +1,12 @@
 #include "../include/task_manager.h"
 #include "../include/globals.h"
 #include <fstream>
-#include <ios>
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-template <class T> int arraySize(T arr[]) {
-  int s = 0;
-  for (T i : arr)
-    s++;
-
-  return s;
-};
+template <typename T, size_t N> size_t arraySize(T (&arr)[N]) { return N; }
 
 string enlargeTextWithSpaces(string text, int size) {
   bool reached_end = false;
@@ -121,3 +114,4 @@ void printMenu(const string options[], int size) {
     }
   }
 }
+
