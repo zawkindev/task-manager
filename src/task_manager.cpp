@@ -5,8 +5,6 @@
 
 using namespace std;
 
-template <typename T, size_t N> size_t arraySize(T (&arr)[N]) { return N; }
-
 string enlargeTextWithSpaces(string text, int size) {
   bool reached_end = false;
 

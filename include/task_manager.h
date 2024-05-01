@@ -3,12 +3,13 @@
 
 #include "Category.h"
 #include "Task.h"
+#include <cstddef>
 #include <fstream>
 #include <string>
 
 using namespace std;
 
-template <typename T, size_t N> size_t arraySize(T (&arr)[N]);
+template <typename T, size_t N> size_t arraySize(T (&arr)[N]) { return N; }
 
 void enlargeTextWithSpaces(string *text, int size);
 
