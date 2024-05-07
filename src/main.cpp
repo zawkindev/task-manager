@@ -4,7 +4,6 @@
 int main() {
   string arr[] = {"salom"};
 
-  std::cout << arraySize(arr);
 
   return 0;
 }
