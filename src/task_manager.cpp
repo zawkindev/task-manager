@@ -5,7 +5,7 @@
 
 using namespace std;
 
-string enlargeTextWithSpaces(string text, int size) {
+string enlargeTextWithSpaces(string text, int size) {   // enlarge text with spaces
   bool reached_end = false;
 
   for (int i = 0; i <= size; i++) {
@@ -21,7 +21,7 @@ string enlargeTextWithSpaces(string text, int size) {
   return text;
 };
 
-int findMax(Task *tasks, int supposed_size) {
+int findMax(Task *tasks, int supposed_size) {   // find the task with max length name
   int max_index = 0;
   int max_len = 0;
 
@@ -37,7 +37,7 @@ int findMax(Task *tasks, int supposed_size) {
   return max_index;
 }
 
-void formatTasks(Category *category) {
+void formatTasks(Category *category) {  // enlarge tasks' names of category with spaces
   Task *tasks = category->getTasks();
   Task max_task = tasks[findMax(tasks, category->size)];
 
@@ -49,12 +49,12 @@ void formatTasks(Category *category) {
   };
 }
 
-void createFile(string filename) {
+void createFile(string filename) {    // create a file
   ofstream File(filename);
   File.close();
 }
 
-void readFile(string *str, string filename) {
+void readFile(string *str, string filename) {  // read file
   ifstream File(filename);
   string temp;
 
@@ -64,7 +64,7 @@ void readFile(string *str, string filename) {
   }
 }
 
-void writeFile(string str, string filename, std::ios::openmode mode) {
+void writeFile(string str, string filename, std::ios::openmode mode) {   // write file
   ofstream File(filename, mode);
 
   if (File.is_open()) {
@@ -72,7 +72,7 @@ void writeFile(string str, string filename, std::ios::openmode mode) {
   }
 }
 
-void printNavbar(const string bars[], int size) {
+void printNavbar(const string bars[], int size) {  // print navbar
   string element;
   int i;
 
@@ -99,7 +99,7 @@ void printNavbar(const string bars[], int size) {
 //   }
 // }
 
-void printMenu(const string options[], int size) {
+void printMenu(const string options[], int size) {   // prints menu
   string element;
   int i;
 
