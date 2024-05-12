@@ -8,6 +8,11 @@ Category::Category() {
   }
 }
 
+Category::Category(string name, Task tasks[], int size) {
+  this->setName(name);
+  this->setTasks(tasks, size);
+};
+
 string Category::getName() { return name; }
 
 Task *Category::getTasks() { return tasks; }

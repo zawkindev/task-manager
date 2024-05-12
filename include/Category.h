@@ -12,11 +12,12 @@ private:
 public:
   int size;
 
-  Category(); 
+  Category();
+  Category(string name, Task tasks[], int size);
 
   // getters
   string getName();
-  Task* getTasks();
+  Task *getTasks();
 
   // setters
   void setName(string name);
