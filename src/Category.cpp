@@ -28,8 +28,8 @@ void Category::setTasks(Task tasks[], int size) {
 }
 
 void Category::push(Task new_task) {
-  size++;
   tasks[size] = new_task;
+  size++;
 }
 
 void Category::pop() {

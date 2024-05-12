@@ -5,7 +5,8 @@
 
 using namespace std;
 
-string enlargeTextWithSpaces(string text, int size) {   // enlarge text with spaces
+// enlarge text with spaces
+string enlargeTextWithSpaces(string text, int size) {
   bool reached_end = false;
 
   for (int i = 0; i <= size; i++) {
@@ -15,13 +16,14 @@ string enlargeTextWithSpaces(string text, int size) {   // enlarge text with spa
     }
 
     if (reached_end)
-      text += " ";
+      text += ".";
   }
 
   return text;
 };
 
-int findMax(Task *tasks, int supposed_size) {   // find the task with max length name
+// find the task with max length name
+int findMax(Task *tasks, int supposed_size) {
   int max_index = 0;
   int max_len = 0;
 
@@ -37,7 +39,7 @@ int findMax(Task *tasks, int supposed_size) {   // find the task with max length
   return max_index;
 }
 
-void formatTasks(Category *category) {  // enlarge tasks' names of category with spaces
+void formatTasks(Category *category) {
   Task *tasks = category->getTasks();
   Task max_task = tasks[findMax(tasks, category->size)];
 
@@ -49,12 +51,12 @@ void formatTasks(Category *category) {  // enlarge tasks' names of category with
   };
 }
 
-void createFile(string filename) {    // create a file
+void createFile(string filename) { // create a file
   ofstream File(filename);
   File.close();
 }
 
-void readFile(string *str, string filename) {  // read file
+void readFile(string *str, string filename) { // read file
   ifstream File(filename);
   string temp;
 
@@ -64,7 +66,8 @@ void readFile(string *str, string filename) {  // read file
   }
 }
 
-void writeFile(string str, string filename, std::ios::openmode mode) {   // write file
+void writeFile(string str, string filename,
+               std::ios::openmode mode) { // write file
   ofstream File(filename, mode);
 
   if (File.is_open()) {
@@ -72,7 +75,7 @@ void writeFile(string str, string filename, std::ios::openmode mode) {   // writ
   }
 }
 
-void printNavbar(const string bars[], int size) {  // print navbar
+void printNavbar(const string bars[], int size) { // print navbar
   string element;
   int i;
 
@@ -99,7 +102,7 @@ void printNavbar(const string bars[], int size) {  // print navbar
 //   }
 // }
 
-void printMenu(const string options[], int size) {   // prints menu
+void printMenu(const string options[], int size) { // prints menu
   string element;
   int i;
 
