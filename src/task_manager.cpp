@@ -1,5 +1,4 @@
 #include "../include/task_manager.h"
-#include <cstddef>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -48,6 +47,7 @@ void formatTasks(Category *category) {
 
   for (int i = 0; i < category->size; i++) {
     Task *current_task = &tasks[i];
+
     string en_text = enlargeTextWithSpaces(current_task->getName(),
                                            max_task.getName().length());
     current_task->setName(en_text);
@@ -114,11 +114,12 @@ void printMenu(const string options[], int size) {
 // print all todos and categories
 void printTasks(vector<Category> categories) {
 
+  formatCategories(&categories);
+
   for (int i = 0; i < categories.size(); i++) {
     Category c = categories[i];
     Task *sub_tasks = c.getTasks();
 
-    formatCategories(&categories);
     formatTasks(&c);
 
     for (int j = 0; j < c.size; j++) {
@@ -127,12 +128,13 @@ void printTasks(vector<Category> categories) {
   }
 }
 
+// add empty tasks to the smaller category to be equal to other
 void formatCategories(std::vector<Category> *categories) {
   if (categories->size() < 2)
     return;
 
   Category *c, *p; // current, previous
-                   //
+
   for (int i = 1; i < categories->size(); i += 2) {
     c = &categories->at(i);
     p = &categories->at(i - 1);

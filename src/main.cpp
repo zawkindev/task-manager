@@ -9,6 +9,7 @@ int main() {
   std::vector<Category> c = {Category("IT", t1, 2),
                              Category("Business", t2, 3)};
 
+
   printTasks(c);
 
   return 0;

@@ -2,11 +2,11 @@
 using namespace std;
 
 Task::Task() {
-  name = "";
+  name = "*empty task*";
   edited = false;
 }
 
-Task::Task(string name) : name(name) {}
+Task::Task(string name) : name(name), edited(false) {}
 
 string Task::getName() { return name; }
 bool Task::getState() { return edited; }

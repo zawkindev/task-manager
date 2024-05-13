@@ -3,9 +3,9 @@
 
 Category::Category() {
   size = 0;
-  for (int i = 0; i < LIMIT; i++) {
-    tasks[i] = Task();
-  }
+  // for (int i = 0; i < LIMIT; i++) {
+  //   tasks[i] = Task();
+  // }
 }
 
 Category::Category(string name, Task tasks[], int size) {
