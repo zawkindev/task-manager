@@ -1,19 +1,10 @@
-#include "../include/task_manager.h"
+#include "../include/transpiler.h"
 #include <vector>
 
 int main() {
-  Task t1[] = {Task("edit the task"), Task("commit latest changes")};
-  Task t2[] = {Task("attend to meeting"), Task("buy stocks"),
-               Task("bankrot already")};
+  std::vector<Category> c;
 
-  std::vector<Category> c = {Category("IT", t1, 2), Category("Business", t2, 3),
-                             Category("Kurs", t2, 3),
-                             Category("Coursera", t2, 3),
-                             Category("Courseraaksdfalf", t2, 3),
-                             Category("Cou", t2, 3),
-  };
-
-  printTasks(c);
+  fetchCategories(&c, "src/data.todo");
 
   return 0;
 }

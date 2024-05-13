@@ -72,7 +72,7 @@ void readFile(string *str, string filename) { // read file
 
   if (File.is_open()) {
     while (getline(File, temp))
-      *str += temp;
+      *str += temp + "\n";
   }
 }
 
@@ -135,7 +135,8 @@ void printTasks(vector<Category> categories) {
       Category *p = c - 1;       // previous category
       Task *p_t = p->getTasks(); // tasks in p
 
-      lines.push_back(p->getName() + TAB + TAB + TAB + c->getName() + "\n");
+      lines.push_back("\n" + p->getName() + TAB + TAB + TAB + c->getName() +
+                      "\n");
 
       for (int j = 0; j < c->size; j++) {
         lines.push_back("  " + (p_t + j)->getName() + TAB + TAB +
