@@ -2,7 +2,7 @@
 using namespace std;
 
 Task::Task() {
-  name = "*empty task*";
+  name = "";
   edited = false;
 }
 

@@ -2,6 +2,7 @@
 #define GLOBALS_H
 
 #define LIMIT 1000
+#define TAB "   " 
 
 #include <string>
 using namespace std;

@@ -18,7 +18,7 @@ string enlargeTextWithSpaces(string text, int size) {
     }
 
     if (reached_end)
-      text += ".";
+      text += " ";
   }
 
   return text;
@@ -50,11 +50,15 @@ void formatTasks(Category *category) {
 
     string en_text = enlargeTextWithSpaces(current_task->getName(),
                                            max_task.getName().length());
-    current_task->setName(en_text);
+
+    if (current_task->getName().length() > 0)
+      current_task->setName(std::to_string(i + 1) + ". " + en_text);
+    else
+      current_task->setName("   " + en_text);
   };
 
-  category->setName(
-      enlargeTextWithSpaces(category->getName(), max_task.getName().length()));
+  category->setName(enlargeTextWithSpaces(category->getName() + ":",
+                                          max_task.getName().length()));
 }
 
 void createFile(string filename) { // create a file
@@ -113,18 +117,32 @@ void printMenu(const string options[], int size) {
 
 // print all todos and categories
 void printTasks(vector<Category> categories) {
+  vector<string> lines;
 
   formatCategories(&categories);
 
   for (int i = 0; i < categories.size(); i++) {
-    Category c = categories[i];
-    Task *sub_tasks = c.getTasks();
+    Category *c = &categories[i];
 
-    formatTasks(&c);
+    formatTasks(c);
 
-    for (int j = 0; j < c.size; j++) {
-      std::cout << "  " << j + 1 << ". " << sub_tasks[j].getName() << '\n';
+    if ((i + 1) % 2 == 0) {
+      Category *p = c - 1; // previous category
+
+      Task *c_t = c->getTasks(); // tasks in c
+      Task *p_t = p->getTasks(); // tasks in p
+
+      lines.push_back(p->getName() + TAB + TAB + c->getName() + "\n");
+
+      for (int j = 0; j < c->size; j++) {
+        lines.push_back("  " + (p_t + j)->getName() + TAB + TAB +
+                        (c_t + j)->getName() + "\n");
+      }
     }
+  }
+
+  for (int i = 0; i < lines.size(); i++) {
+    std::cout << lines[i];
   }
 }
 
