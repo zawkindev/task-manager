@@ -1,17 +1,15 @@
 #include "../include/task_manager.h"
+#include <vector>
 
 int main() {
-  Task t1, t2;
+  Task t1[] = {Task("edit the task"), Task("commit latest changes")};
+  Task t2[] = {Task("attend to meeting"), Task("buy stocks"),
+               Task("bankrot already")};
 
-  t1 = Task("edit");
-  t2 = Task("create");
+  std::vector<Category> c = {Category("IT", t1, 2),
+                             Category("Business", t2, 3)};
 
-  Category c1;
-
-  c1.push(t1);
-  c1.push(t2);
-
-  formatTasks(&c1);
+  printTasks(c);
 
   return 0;
 }

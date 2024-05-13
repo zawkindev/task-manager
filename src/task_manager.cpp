@@ -1,7 +1,10 @@
 #include "../include/task_manager.h"
+#include <cstddef>
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -49,6 +52,9 @@ void formatTasks(Category *category) {
                                            max_task.getName().length());
     current_task->setName(en_text);
   };
+
+  category->setName(
+      enlargeTextWithSpaces(category->getName(), max_task.getName().length()));
 }
 
 void createFile(string filename) { // create a file
@@ -91,18 +97,8 @@ void printNavbar(const string bars[], int size) { // print navbar
   }
 }
 
-// void printTasks(Category categories[]) {
-//   int c;
-//   int c_size = sizeof(categories) / sizeof(categories[0]);
-//
-//   for (int i = 0; i < LIMIT && (size = categories[i].size) > 0; i++) {
-//     for (int j = 0; j < business.size; j++) {
-//       std::cout << "  " << j + 1 << ". " << sub_tasks[j].getName() << '\n';
-//     }
-//   }
-// }
-
-void printMenu(const string options[], int size) { // prints menu
+// prints menu
+void printMenu(const string options[], int size) {
   string element;
   int i;
 
@@ -111,6 +107,41 @@ void printMenu(const string options[], int size) { // prints menu
     cout << element << "\n";
     if (options[i + 1] == "m. main menu" || options[i + 1] == "0. exit") {
       cout << "\n";
+    }
+  }
+}
+
+// print all todos and categories
+void printTasks(vector<Category> categories) {
+
+  for (int i = 0; i < categories.size(); i++) {
+    Category c = categories[i];
+    Task *sub_tasks = c.getTasks();
+
+    formatCategories(&categories);
+    formatTasks(&c);
+
+    for (int j = 0; j < c.size; j++) {
+      std::cout << "  " << j + 1 << ". " << sub_tasks[j].getName() << '\n';
+    }
+  }
+}
+
+void formatCategories(std::vector<Category> *categories) {
+  if (categories->size() < 2)
+    return;
+
+  Category *c, *p; // current, previous
+                   //
+  for (int i = 1; i < categories->size(); i += 2) {
+    c = &categories->at(i);
+    p = &categories->at(i - 1);
+
+    for (int j = 0; j < abs(c->size - p->size); j++) {
+      if (c->size > p->size)
+        p->push(Task());
+      else
+        c->push(Task());
     }
   }
 }

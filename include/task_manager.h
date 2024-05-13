@@ -6,6 +6,7 @@
 #include <cstddef>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -16,6 +17,8 @@ void enlargeTextWithSpaces(string *text, int size);
 int findMax(Task *tasks, int supposed_size);
 
 void formatTasks(Category *category);
+
+void formatCategories(vector<Category> *categories);
 
 void createFile(string filename);
 
@@ -36,7 +39,7 @@ void printNavbar(string bars[], int size);
  *
  * */
 
-void printTasks(Category categories[]);
+void printTasks(vector<Category> categories);
 /*
  * this function takes an array of Tasks.
  * it should print them in the following order:
