@@ -123,21 +123,29 @@ void printTasks(vector<Category> categories) {
 
   for (int i = 0; i < categories.size(); i++) {
     Category *c = &categories[i];
+    Task *c_t = c->getTasks(); // tasks in c
 
     formatTasks(c);
 
-    if ((i + 1) % 2 == 0) {
-      Category *p = c - 1; // previous category
+    if (i == 0) {
+      continue;
+    }
 
-      Task *c_t = c->getTasks(); // tasks in c
+    if (i % 2 == 1 || (i + 1) % 2 == 0) {
+      Category *p = c - 1;       // previous category
       Task *p_t = p->getTasks(); // tasks in p
 
-      lines.push_back(p->getName() + TAB + TAB + c->getName() + "\n");
+      lines.push_back(p->getName() + TAB + TAB + TAB + c->getName() + "\n");
 
       for (int j = 0; j < c->size; j++) {
         lines.push_back("  " + (p_t + j)->getName() + TAB + TAB +
                         (c_t + j)->getName() + "\n");
       }
+    } else if (i == categories.size() - 1) {
+      lines.push_back("\n" + c->getName() + "\n");
+
+      for (int j = 0; j < c->size; j++)
+        lines.push_back("  " + (c_t + j)->getName() + "\n");
     }
   }
 

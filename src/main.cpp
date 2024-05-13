@@ -6,9 +6,12 @@ int main() {
   Task t2[] = {Task("attend to meeting"), Task("buy stocks"),
                Task("bankrot already")};
 
-  std::vector<Category> c = {Category("IT", t1, 2),
-                             Category("Business", t2, 3)};
-
+  std::vector<Category> c = {Category("IT", t1, 2), Category("Business", t2, 3),
+                             Category("Kurs", t2, 3),
+                             Category("Coursera", t2, 3),
+                             Category("Courseraaksdfalf", t2, 3),
+                             Category("Cou", t2, 3),
+  };
 
   printTasks(c);
 
