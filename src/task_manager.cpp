@@ -45,11 +45,16 @@ void formatTasks(Category *category) {
   Task *tasks = category->getTasks();
   Task max_task = tasks[findMax(tasks, category->size)];
 
+  int max_len = max_task.getName().length();
+
+  if (max_len < category->getName().length()) {
+    max_len = category->getName().length();
+  }
+
   for (int i = 0; i < category->size; i++) {
     Task *current_task = &tasks[i];
 
-    string en_text = enlargeTextWithSpaces(current_task->getName(),
-                                           max_task.getName().length());
+    string en_text = enlargeTextWithSpaces(current_task->getName(), max_len);
 
     if (current_task->getName().length() > 0)
       current_task->setName(std::to_string(i + 1) + ". " + en_text);
@@ -135,7 +140,7 @@ void printTasks(vector<Category> categories) {
       Category *p = c - 1;       // previous category
       Task *p_t = p->getTasks(); // tasks in p
 
-      lines.push_back("\n" + p->getName() + TAB + TAB + TAB + c->getName() +
+      lines.push_back("\n" + p->getName() + TAB + TAB + "  " + c->getName() +
                       "\n");
 
       for (int j = 0; j < c->size; j++) {
