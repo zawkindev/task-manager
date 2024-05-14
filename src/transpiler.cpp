@@ -5,6 +5,19 @@
 #define IN 1
 #define OUT 0
 
+void getLines(std::vector<string> *lines, std::string *str) {
+  std::string line;
+
+  for (int i = 0; i < str->length(); i++) {
+    if ((*str)[i] == '\n') {
+      lines->push_back(line);
+      line = "";
+    } else {
+      line += (*str)[i];
+    }
+  }
+}
+
 void fetchCategoryNames(std::vector<Category> *categories,
                         std::string filename) {
   std::string str;
@@ -33,4 +46,54 @@ void fetchCategoryNames(std::vector<Category> *categories,
         name += c;
     }
   }
+}
+
+void fetchTasks(Category *category, std::string filename) {
+  int state;
+  std::string str;
+  std::string task_name;
+  std::string category_name;
+  std::vector<std::string> lines;
+
+  readFile(&str, filename);
+
+  getLines(&lines, &str);
+
+  for (int i = 0; i < lines.size(); i++) {
+    std::string l = lines[i];
+
+    for (int j = 0; j < l.length(); j++) {
+      char c = l[j];
+
+      if (c == '[') {
+        j++;
+        category_name = "";
+
+        while ((c = l[j]) != ']') {
+          category_name += c;
+          j++;
+        }
+
+        i++;
+      }
+    }
+
+    if (category_name == category->getName()) {
+      category->push(Task(lines[i]));
+    } else {
+      continue;
+    }
+  }
+}
+
+std::vector<Category> fetchData(std::string filename) {
+  std::vector<Category> categories;
+
+  fetchCategoryNames(&categories, filename);
+
+  for (int i = 0; i < categories.size(); i++) {
+    fetchTasks(&categories[i], filename);
+  }
+
+  return categories;
 }

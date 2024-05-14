@@ -1,15 +1,13 @@
+#include "../include/task_manager.h"
 #include "../include/transpiler.h"
-#include <iostream>
 #include <vector>
 
 int main() {
   std::vector<Category> c;
 
-  fetchCategoryNames(&c, "src/data.todo");
+  c = fetchData("src/data.todo");
 
-  for (int i = 0; i < c.size(); i++) {
-    std::cout << c[i].getName() << '\n';
-  }
+  printTasks(c);
 
   return 0;
 }

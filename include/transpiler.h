@@ -2,10 +2,15 @@
 #define TRANSPILER_H
 
 #include "Category.h"
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
 
-void fetchCategoryNames(std::vector<Category> *categories, std::string filename);
+void fetchCategoryNames(std::vector<Category> *categories,
+                        std::string filename);
+
+void fetchTasks(Category *category, std::string filename);
+
+std::vector<Category> fetchData(std::string filename);
 
 #endif
