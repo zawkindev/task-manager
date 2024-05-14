@@ -6,6 +6,6 @@
 #include <vector>
 #include <iostream>
 
-void fetchCategories(std::vector<Category> *categories, std::string filename);
+void fetchCategoryNames(std::vector<Category> *categories, std::string filename);
 
 #endif
