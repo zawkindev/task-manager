@@ -1,5 +1,6 @@
 #include "../include/transpiler.h"
 #include "../include/task_manager.h"
+#include <ios>
 #include <vector>
 
 #define IN 1
@@ -96,4 +97,21 @@ std::vector<Category> fetchData(std::string filename) {
   }
 
   return categories;
+}
+
+void postData(std::vector<Category> *categories, std::string filename) {
+  std::string str;
+
+  for (int i = 0; i < categories->size(); i++) {
+    Category c = (*categories)[i];
+    Task *tasks = c.getTasks();
+
+    str += "[" + c.getName() + "]\n";
+
+    for (int j = 0; j < c.size; j++) {
+      str += (tasks + j)->getName() + "\n";
+    }
+  }
+
+  writeFile(str, filename, std::ios::out);
 }

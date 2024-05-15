@@ -13,4 +13,6 @@ void fetchTasks(Category *category, std::string filename);
 
 std::vector<Category> fetchData(std::string filename);
 
+void postData(std::vector<Category> *categories, std::string filename);
+
 #endif

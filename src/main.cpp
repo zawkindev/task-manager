@@ -7,6 +7,8 @@ int main() {
 
   c = fetchData("src/data.todo");
 
+  postData(&c, "edited.todo");
+
   printTasks(c);
 
   return 0;
