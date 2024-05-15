@@ -90,7 +90,7 @@ void writeFile(string str, string filename,
   }
 }
 
-void printNavbar(const string bars[], int size) { // print navbar
+void printNavbar(vector<string> bars, int size) { // print navbar
   string element;
   int i;
 
@@ -107,14 +107,14 @@ void printNavbar(const string bars[], int size) { // print navbar
 }
 
 // prints menu
-void printMenu(const string options[], int size) {
+void printMenu(vector<string> options, int size) {
   string element;
   int i;
 
   for (i = 0; i < size; ++i) {
     element = options[i];
     cout << element << "\n";
-    if (options[i + 1] == "m. main menu" || options[i + 1] == "0. exit") {
+    if (options[i + 1] == "0. back") {
       cout << "\n";
     }
   }

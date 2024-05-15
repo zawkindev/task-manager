@@ -26,7 +26,7 @@ void readFile(string *str, string filename);
 
 void writeFile(string str, string filename, std::ios::openmode mode);
 
-void printNavbar(string bars[], int size);
+void printNavbar(vector<string> options, int size);
 /*
  * this function takes an array of strings.
  * it should print them in the following order:
@@ -57,7 +57,7 @@ Business:                                    IT:
  *
  * */
 
-void printMenu(string options[], int size);
+void printMenu(vector<string> options, int size);
 /*
  * this function takes an array of strings.
  * it should print them in the following order:

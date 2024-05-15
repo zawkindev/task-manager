@@ -80,7 +80,9 @@ void fetchTasks(Category *category, std::string filename) {
     }
 
     if (category_name == category->getName()) {
-      category->push(Task(lines[i]));
+      // if (lines[i] != "\n") {
+        category->push(Task(lines[i]));
+      // }
     } else {
       continue;
     }
