@@ -130,7 +130,7 @@ int main() {
               continue;
             }
 
-            if (taskIndex < 0 || taskIndex >= c.size) {
+            if (taskIndex < 0 || taskIndex >= c.size + 1) {
               std::cerr << "Task index out of bounds." << std::endl;
               continue;
             }
@@ -142,6 +142,71 @@ int main() {
             std::getline(std::cin, new_name);
 
             c.getTasks()[taskIndex - 1].setName(new_name);
+
+            categoryFound = true;
+            break;
+          }
+        }
+
+        if (!categoryFound) {
+          std::cerr << "Category not found." << std::endl;
+        }
+      } else {
+        std::cerr << "No categories available." << std::endl;
+      }
+
+      postData(&categories, FILE);
+
+      mode = MAIN;
+      navbar.pop_back();
+
+      break;
+    }
+    case DELETE: {
+      system("clear");
+      printNavbar(navbar, navbar.size());
+      printTasks(categories);
+
+      std::string task;
+      std::string category;
+
+      std::cout << "\ncategory name: ";
+      std::cin >> category;
+      category = trim(category);
+
+      int size = categories.size();
+
+      bool categoryFound = false;
+      if (!categories.empty()) {
+        for (Category &c : categories) {
+          if (c.getName() == category) {
+            std::cout << "task index: ";
+            std::cin >> task;
+            task = trim(task);
+
+            int taskIndex;
+            try {
+              taskIndex = std::stoi(task);
+            } catch (const std::invalid_argument &) {
+              std::cerr << "Invalid task index." << std::endl;
+              continue;
+            } catch (const std::out_of_range &) {
+              std::cerr << "Task index out of range." << std::endl;
+              continue;
+            }
+
+            if (taskIndex < 1 || taskIndex > c.size) {
+              std::cerr << "Task index out of bounds." << std::endl;
+              continue;
+            }
+
+            // Shift elements to delete the task
+            Task *tasks = c.getTasks();
+            int numTasks = c.size;
+            for (int i = taskIndex - 1; i < numTasks - 1; ++i) {
+              tasks[i] = tasks[i + 1];
+            }
+            c.size -= 1; // Decrease the size of the tasks array
 
             categoryFound = true;
             break;
