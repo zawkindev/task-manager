@@ -2,6 +2,7 @@
 #include "../include/transpiler.h"
 #include <cstdio>
 #include <cstdlib>
+#include <string>
 #include <vector>
 
 #define MAIN 0
@@ -22,7 +23,6 @@ int main() {
 
     switch (mode) {
     case MAIN: {
-
       system("clear");
       printNavbar(navbar, navbar.size());
       printTasks(categories);
@@ -53,7 +53,6 @@ int main() {
     }
 
     case ADD: {
-
       system("clear");
       printNavbar(navbar, navbar.size());
       printTasks(categories);
@@ -67,14 +66,15 @@ int main() {
       std::cout << "task name: ";
       std::cin >> task;
 
+      category = trim(category);
+      task = trim(task);
+
       int size = categories.size();
 
       bool categoryFound = false;
       if (categories.size() > 0) {
         for (Category &c : categories) {
           if (c.getName() == category) {
-            std::cout << "c.getName() == category: " << category
-                      << ", name: " << c.getName() << "\n";
             c.push(Task(task));
             categoryFound = true;
             break;
@@ -88,6 +88,71 @@ int main() {
       } else {
         Task tasks[] = {Task(task)};
         categories.push_back(Category(category, tasks, 1));
+      }
+
+      postData(&categories, FILE);
+
+      mode = MAIN;
+      navbar.pop_back();
+
+      break;
+    }
+    case EDIT: {
+      system("clear");
+      printNavbar(navbar, navbar.size());
+      printTasks(categories);
+
+      std::string task;
+      std::string category;
+
+      std::cout << "\ncategory name: ";
+      std::cin >> category;
+      category = trim(category);
+
+      int size = categories.size();
+
+      bool categoryFound = false;
+      if (!categories.empty()) {
+        for (Category &c : categories) {
+          if (c.getName() == category) {
+            std::cout << "task index: ";
+            std::cin >> task;
+            task = trim(task);
+
+            int taskIndex;
+            try {
+              taskIndex = std::stoi(task);
+            } catch (const std::invalid_argument &) {
+              std::cerr << "Invalid task index." << std::endl;
+              continue;
+            } catch (const std::out_of_range &) {
+              std::cerr << "Task index out of range." << std::endl;
+              continue;
+            }
+
+            if (taskIndex < 0 || taskIndex >= c.size) {
+              std::cerr << "Task index out of bounds." << std::endl;
+              continue;
+            }
+
+            std::cin.ignore(); // Ignore any leftover newline character in the
+                               // input buffer
+            std::string new_name;
+            std::cout << "new task name: ";
+            std::getline(std::cin, new_name);
+
+            c.getTasks()[taskIndex - 1].setName(new_name);
+
+            categoryFound = true;
+            break;
+          }
+        }
+
+        if (!categoryFound) {
+          std::cerr << "Category not found." << std::endl;
+        }
+      } else {
+        std::cerr << "No categories available." << std::endl;
       }
 
       postData(&categories, FILE);
