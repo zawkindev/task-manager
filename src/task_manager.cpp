@@ -132,15 +132,11 @@ void printTasks(vector<Category> categories) {
 
     formatTasks(c);
 
-    if (i == 0) {
-      continue;
-    }
-
     if (i % 2 == 1 || (i + 1) % 2 == 0) {
       Category *p = c - 1;       // previous category
       Task *p_t = p->getTasks(); // tasks in p
 
-      lines.push_back("\n" + p->getName() + TAB + TAB + "  " + c->getName() +
+      lines.push_back("\n" + p->getName() + TAB + TAB + "   " + c->getName() +
                       "\n");
 
       for (int j = 0; j < c->size; j++) {
@@ -171,8 +167,11 @@ void formatCategories(std::vector<Category> *categories) {
     c = &categories->at(i);
     p = &categories->at(i - 1);
 
-    for (int j = 0; j < abs(c->size - p->size); j++) {
-      if (c->size > p->size)
+    int c_size = c->size;
+    int p_size = p->size;
+
+    for (int j = 0; j < abs(c_size - p_size); j++) {
+      if (c_size > p_size)
         p->push(Task());
       else
         c->push(Task());

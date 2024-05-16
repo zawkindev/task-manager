@@ -21,9 +21,9 @@ int main() {
     std::vector<Category> categories = fetchData(FILE);
 
     switch (mode) {
-    case MAIN:
-      system("clear");
+    case MAIN: {
 
+      system("clear");
       printNavbar(navbar, navbar.size());
       printTasks(categories);
 
@@ -50,8 +50,14 @@ int main() {
       }
 
       break;
+    }
 
-    case ADD:
+    case ADD: {
+
+      system("clear");
+      printNavbar(navbar, navbar.size());
+      printTasks(categories);
+
       std::string task;
       std::string category;
 
@@ -63,16 +69,25 @@ int main() {
 
       int size = categories.size();
 
-      for (int i = 0; i < size; i++) {
-        Category *c = &categories[i];
+      bool categoryFound = false;
+      if (categories.size() > 0) {
+        for (Category &c : categories) {
+          if (c.getName() == category) {
+            std::cout << "c.getName() == category: " << category
+                      << ", name: " << c.getName() << "\n";
+            c.push(Task(task));
+            categoryFound = true;
+            break;
+          }
+        }
 
-        if (c->getName() == category) {
-          c->push(Task(task));
-
-        } else if (i == categories.size() - 1) {
+        if (!categoryFound) {
           Task tasks[] = {Task(task)};
           categories.push_back(Category(category, tasks, 1));
         }
+      } else {
+        Task tasks[] = {Task(task)};
+        categories.push_back(Category(category, tasks, 1));
       }
 
       postData(&categories, FILE);
@@ -81,6 +96,7 @@ int main() {
       navbar.pop_back();
 
       break;
+    }
     }
   }
 

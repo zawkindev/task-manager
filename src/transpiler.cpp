@@ -8,10 +8,13 @@
 
 void getLines(std::vector<string> *lines, std::string *str) {
   std::string line;
+  int len = str->length();
 
-  for (int i = 0; i < str->length(); i++) {
+  for (int i = 0; i < len; i++) {
     if ((*str)[i] == '\n') {
-      lines->push_back(line);
+      if (line.length() > 0) {
+        lines->push_back(line);
+      }
       line = "";
     } else {
       line += (*str)[i];
@@ -60,7 +63,9 @@ void fetchTasks(Category *category, std::string filename) {
 
   getLines(&lines, &str);
 
-  for (int i = 0; i < lines.size(); i++) {
+  int size = lines.size();
+
+  for (int i = 0; i < size; i++) {
     std::string l = lines[i];
 
     for (int j = 0; j < l.length(); j++) {
@@ -80,11 +85,7 @@ void fetchTasks(Category *category, std::string filename) {
     }
 
     if (category_name == category->getName()) {
-      // if (lines[i] != "\n") {
-        category->push(Task(lines[i]));
-      // }
-    } else {
-      continue;
+      category->push(Task(lines[i]));
     }
   }
 }
@@ -113,6 +114,8 @@ void postData(std::vector<Category> *categories, std::string filename) {
     for (int j = 0; j < c.size; j++) {
       str += (tasks + j)->getName() + "\n";
     }
+
+    str += "\n";
   }
 
   writeFile(str, filename, std::ios::out);
